@@ -7,7 +7,7 @@ defmodule GenstageDemo.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
-    queue_name = Application.get_env(:genstage_test, :queue_name)
+    queue_name = Application.get_env(:genstage_demo, :queue_name)
     children = [
       # Starts a worker by calling: GenstageDemo.Worker.start_link(arg)
       # {GenstageDemo.Worker, arg},

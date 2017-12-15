@@ -3,7 +3,7 @@ defmodule GenstageDemo.Mixfile do
 
   def project do
     [
-      app: :genstage_test,
+      app: :genstage_demo,
       version: "0.1.0",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,

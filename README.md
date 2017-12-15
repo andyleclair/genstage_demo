@@ -1,6 +1,6 @@
-# GenstageTest
+# GenstageDemo
 
-**TODO: Add description**
+Demo Application for demonstrating use of `GenStage` with Amazon SQS
 
 ## Installation
 
