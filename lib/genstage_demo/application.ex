@@ -14,7 +14,8 @@ defmodule GenstageDemo.Application do
       {GenstageDemo.Producer, queue_name},
       {GenstageDemo.EventEmitter, queue_name},
       # need to send queue name to consumer so we can delete events
-      {GenstageDemo.Consumer, queue_name}
+      #{GenstageDemo.Consumer, queue_name}
+      {GenstageDemo.ConsumerSupervisor, queue_name}
 
     ]
 
