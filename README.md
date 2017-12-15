@@ -1,21 +1,20 @@
-# GenstageDemo
+GenstageDemo
+============
 
 Demo Application for demonstrating use of `GenStage` with Amazon SQS
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `genstage_test` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:genstage_test, "~> 0.1.0"}
-  ]
-end
+```
+mix deps.get
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/genstage_test](https://hexdocs.pm/genstage_test).
+## Walkthrough
 
+- `application.ex` describes the main Application behaviour that starts our GenStage process.
+- `producer.ex` is a basic GenStage producer. It responds to demand from workers by fetching messages from SQS in batches of 10 or less
+- `consumer.ex` is a basic GenStage consumer. It receives asks for messages from the producer and prints them to the console, then deletes the message from SQS
+- `event_emitter.ex` is a GenServer that writes a message to SQS once per second with a body of just the system time in millis
+- `consumer_supervisor.ex` is a GenStage ConsumerSupervisor. It sends demand upstream to the Producer and spawns a Printer process for each message it receives
+- `printer.ex` is a simple message processor that prints a message, then deletes it from SQS.
